@@ -1,0 +1,17 @@
+---
+name: Pull Request checks
+
+"on":
+  pull_request:
+    branches:
+      - main
+      - master
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  check_yaml:
+    uses: ./.github/workflows/check_yaml.yaml
