@@ -1,0 +1,17 @@
+---
+name: "Shell: Run code checks"
+
+"on":
+  workflow_call:
+
+jobs:
+  shell:
+    name: "Shell scripts"
+    runs-on: ubuntu-latest
+    steps:
+      - id: repo_checkout
+        name: "Repository: Checkout"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+      - id: shhellcheck
+        name: "Shellcheck: check scripts"
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38  # v2.0.0
