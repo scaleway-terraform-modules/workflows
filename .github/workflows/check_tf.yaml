@@ -1,0 +1,67 @@
+---
+name: "Terraform: Code checks"
+
+"on":
+  workflow_call:
+
+jobs:
+  terraform:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    steps:
+      - id: repo_checkout
+        name: "Repository: Checkout"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+      - id: tf_version
+        name: "Terraform: Get version"
+        run: |
+          TF_VERSION=$(cat .terraform-version 2>/dev/null || echo latest)
+          echo "TF_VERSION=$TF_VERSION" >> $GITHUB_OUTPUT
+      - id: tf_setup
+        name: "Terraform: Setup"
+        uses: hashicorp/setup-terraform@a1502cd9e758c50496cc9ac5308c4843bcd56d36  # v3.0.0
+        with:
+          terraform_version: ${steps.tf_version.outputs.TF_VERSION}
+      - id: tf_fmt
+        name: "Terraform: Check formatting"
+        run: terraform fmt -check -diff -recursive ./
+      - id: tf_init
+        name: "Terraform: Prepare working directory"
+        run: terraform init
+      - id: tf_validate
+        name: "Terraform: Check configuration is valid"
+        run: terraform validate
+  tfdocs:
+    name: "Documentation"
+    runs-on: ubuntu-latest
+    steps:
+      - id: repo_checkout
+        name: "Repository: Checkout"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+      - id: tfdocs
+        name: "Terraform-Docs: Check Documentation"
+        uses: terraform-docs/gh-actions@f6d59f89a280fa0a3febf55ef68f146784b20ba0  # v1.0.0
+        with:
+          fail-on-diff: true
+  tflint:
+    name: "Linting"
+    runs-on: ubuntu-latest
+    steps:
+      - id: repo_checkout
+        name: "Repository: Checkout"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+      - id: tflint_cache
+        name: "TFLint: Update cache"
+        uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84  # v3.3.2
+        with:
+          path: ~/.tflint.d/plugins
+          key: tflint-${{ hashFiles('.tflint.hcl') }}
+      - id: tflint_setup
+        name: "TFLint: Setup"
+        uses: terraform-linters/setup-tflint@19a52fbac37dacb22a09518e4ef6ee234f2d4987  # v4.0.0
+      - id: tflint_init
+        name: "TFLint: Install plugins"
+        run: tflint --init
+      - id: tflint_inspect
+        name: "TFLint: Inspect code"
+        run: tflint -f compact --module
