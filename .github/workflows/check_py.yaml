@@ -1,0 +1,17 @@
+---
+name: "Python: Syntax checks"
+
+"on":
+  workflow_call:
+
+jobs:
+  shell:
+    name: "Python application"
+    runs-on: ubuntu-latest
+    steps:
+      - id: repo_checkout
+        name: "Repository: Checkout"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+      - id: black
+        name: "Black: check python formatting"
+        uses: rickstaa/action-black@d86849e16a3c498947d70be55198feb86d5d4f53  # v1.3.3
