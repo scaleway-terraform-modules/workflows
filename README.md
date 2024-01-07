@@ -2,6 +2,19 @@
 
 This repository contains reusable workflow files for Github Actions.
 
+## check_py.yaml
+
+Run [`black`](https://black.readthedocs.io/en/stable/) on python files, using [rickstaa/action-black](https://github.com/rickstaa/action-black).
+
+Include the following jobs in your existing workflows to use workflows:
+```yaml
+[...]
+jobs:
+  check_tf:
+    uses: scaleway-terraform-modules/wokflows/.github/workflows/check_py.yaml@main
+
+```
+
 ## check_shell.yaml
 
 Run [shellcheck](https://www.shellcheck.net/) on shell scripts using [ludeeus//action-shellcheck](https://github.com/ludeeus/action-shellcheck).
