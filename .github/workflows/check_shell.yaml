@@ -1,5 +1,5 @@
 ---
-name: "Shell: Run code checks"
+name: "Shell: Code checks"
 
 "on":
   workflow_call:
