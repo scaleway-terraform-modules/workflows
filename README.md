@@ -17,15 +17,15 @@ jobs:
 
 ## check_shell.yaml
 
-Run [shellcheck](https://www.shellcheck.net/) on shell scripts using [ludeeus//action-shellcheck](https://github.com/ludeeus/action-shellcheck).
+Run [shellcheck](https://www.shellcheck.net/) on shell scripts using [ludeeus/action-shellcheck](https://github.com/ludeeus/action-shellcheck).
 
 Include the following jobs in your existing workflows:
 ```yaml
 [...]
 jobs:
   check_sh:
-    uses: https://github.com/scaleway-terraform-modules/wokflows/.github/workflows/check_shell.yaml
-    secrets: inherit
+    uses: scaleway-terraform-modules/wokflows/.github/workflows/check_shell.yaml@main
+
 ```
 
 ## check_tf.yaml
@@ -41,8 +41,9 @@ Include the following jobs in your existing workflows to use workflows:
 [...]
 jobs:
   check_tf:
-    uses: https://github.com/scaleway-terraform-modules/wokflows/.github/workflows/check_tf.yaml
+    uses: scaleway-terraform-modules/wokflows/.github/workflows/check_tf.yaml@main
     secrets: inherit
+
 ```
 
 ## check_yaml.yaml
@@ -54,7 +55,7 @@ Include the following jobs in your existing workflows to use workflows:
 [...]
 jobs:
   check_tf:
-    uses: https://github.com/scaleway-terraform-modules/wokflows/.github/workflows/check_yaml.yaml
-    secrets: inherit
+    uses: scaleway-terraform-modules/wokflows/.github/workflows/check_yaml.yaml@main
+
 ```
 
