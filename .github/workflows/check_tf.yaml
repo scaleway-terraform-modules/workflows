@@ -21,7 +21,7 @@ jobs:
         name: "Terraform: Setup"
         uses: hashicorp/setup-terraform@a1502cd9e758c50496cc9ac5308c4843bcd56d36  # v3.0.0
         with:
-          terraform_version: ${steps.tf_version.outputs.TF_VERSION}
+          terraform_version: ${{steps.tf_version.outputs.TF_VERSION}}
       - id: tf_fmt
         name: "Terraform: Check formatting"
         run: terraform fmt -check -diff -recursive ./
