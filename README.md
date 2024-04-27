@@ -6,11 +6,11 @@ This repository contains reusable workflow files for Github Actions.
 
 Run [`black`](https://black.readthedocs.io/en/stable/) on python files, using [rickstaa/action-black](https://github.com/rickstaa/action-black).
 
-Include the following jobs in your existing workflows to use workflows:
+Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
-  check_tf:
+  check_py:
     uses: scaleway-terraform-modules/wokflows/.github/workflows/check_py.yaml@main
 
 ```
@@ -19,7 +19,7 @@ jobs:
 
 Run [shellcheck](https://www.shellcheck.net/) on shell scripts using [ludeeus/action-shellcheck](https://github.com/ludeeus/action-shellcheck).
 
-Include the following jobs in your existing workflows:
+Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
@@ -37,7 +37,7 @@ Run several checks on terraform code:
 * Linting using [`tflint`](https://github.com/terraform-linters/tflint).
 * Optional: Run `terraform plan`, only if the input variable `run_plan` is set to `true` (disabled by default).
 
-Include the following jobs in your existing workflows to use workflows:
+Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
@@ -53,11 +53,11 @@ jobs:
 
 Run [`yamllint`](https://www.yamllint.com/).
 
-Include the following jobs in your existing workflows to use workflows:
+Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
-  check_tf:
+  check_yaml:
     uses: scaleway-terraform-modules/wokflows/.github/workflows/check_yaml.yaml@main
 
 ```
@@ -66,7 +66,7 @@ jobs:
 
 Apply any changes on the infrastructure.
 
-Include the following jobs in your existing workflows to use the workflow:
+Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
