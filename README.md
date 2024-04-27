@@ -61,3 +61,17 @@ jobs:
     uses: scaleway-terraform-modules/wokflows/.github/workflows/check_yaml.yaml@main
 
 ```
+
+## merge_tf.yaml
+
+Apply any changes on the infrastructure.
+
+Include the following jobs in your existing workflows to use the workflow:
+```yaml
+[...]
+jobs:
+  merge_tf:
+    uses: scaleway-terraform-modules/wokflows/.github/workflows/merge_tf.yaml@main
+    secrets: inherit
+
+```
