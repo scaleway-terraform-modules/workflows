@@ -20,6 +20,7 @@ jobs:
         name: "Terraform: Setup"
         uses: hashicorp/setup-terraform@97f030cf6dc0b4f5e0da352c7bca9cca34579800  # v3.1.0
         with:
+          cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
           terraform_version: ${{steps.tf_version.outputs.TF_VERSION}}
       - id: tf_init
         name: "Terraform: Prepare working directory"
@@ -27,3 +28,5 @@ jobs:
       - id: tf_apply
         name: "Terraform: Apply terraform plan"
         run: terraform apply -auto-approve -input=false -no-color
+        env:
+          TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
