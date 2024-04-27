@@ -76,4 +76,4 @@ jobs:
         run: tflint --init
       - id: tflint_inspect
         name: "TFLint: Inspect code"
-        run: tflint -f compact --module
+        run: tflint -f compact --call-module-type=local
