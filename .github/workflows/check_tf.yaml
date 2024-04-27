@@ -3,7 +3,12 @@ name: "Terraform: Code checks"
 
 "on":
   workflow_call:
-
+    inputs:
+      run_plan:
+        description: 'Runs `terraform plan` after all checks (only for stacks and root modules).'
+        default: false
+        required: false
+        type: boolean
 jobs:
   terraform:
     name: "Terraform"
@@ -31,6 +36,10 @@ jobs:
       - id: tf_validate
         name: "Terraform: Check configuration is valid"
         run: terraform validate
+      - id: tf_plan
+        if: ${{ inputs.run_plan }}
+        name: "Terraform: Check terraform plan"
+        run: terraform plan
   tfdocs:
     name: "Documentation"
     runs-on: ubuntu-latest
