@@ -10,7 +10,7 @@ Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
-  check_tf:
+  check_py:
     uses: scaleway-terraform-modules/wokflows/.github/workflows/check_py.yaml@main
 
 ```
@@ -57,7 +57,7 @@ Include the following jobs in your existing workflows to use this workflow:
 ```yaml
 [...]
 jobs:
-  check_tf:
+  check_yaml:
     uses: scaleway-terraform-modules/wokflows/.github/workflows/check_yaml.yaml@main
 
 ```
