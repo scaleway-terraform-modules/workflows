@@ -1,5 +1,5 @@
 ---
-name: "Shell: Code checks"
+name: "Shell: Syntax checks"
 
 "on":
   workflow_call:

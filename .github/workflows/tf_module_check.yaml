@@ -1,5 +1,5 @@
 ---
-name: "Terraform: Code checks"
+name: "Terraform Module: Code checks"
 
 "on":
   workflow_call:
