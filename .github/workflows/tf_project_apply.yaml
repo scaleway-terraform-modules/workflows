@@ -1,12 +1,22 @@
 ---
-name: "Terraform: Apply Changes"
+name: "Terraform Project: Apply Plan"
 
 "on":
   workflow_call:
+    secrets:
+      GH_TOKEN:
+        description: "Github PAT. Used for managing Github ressources beyond the scope of short-live token (organization, other repositories, etc)"
+        required: false
+      TFE_TOKEN:
+        description: "Terraform Cloud Token. Used for backend's authentication and ressource management"
+        required: false
 jobs:
   terraform:
-    name: "Terraform"
+    name: "Terraform Project"
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.repository }}
+      cancel-in-progress: false
     steps:
       - id: repo_checkout
         name: "Repository: Checkout"
@@ -22,11 +32,17 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
           terraform_version: ${{steps.tf_version.outputs.TF_VERSION}}
+      - name: "Terraform: Cache providers directory"
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9  # v4.0.2
+        with:
+          path: ./.terraform/providers
+          key: tf-${{ steps.tf_version.outputs.TF_VERSION }}-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('.terraform.lock.hcl') }}
       - id: tf_init
         name: "Terraform: Prepare working directory"
         run: terraform init
       - id: tf_apply
-        name: "Terraform: Apply terraform plan"
+        name: "Terraform: Apply plan"
         run: terraform apply -auto-approve -input=false -no-color
         env:
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
