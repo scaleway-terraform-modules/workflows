@@ -35,7 +35,6 @@ Run several checks on terraform code, usefull for modules:
 * Configuration validation using `terraform validate`.
 * Documentation is up to date using [`terraform-docs`](https://terraform-docs.io/).
 * Linting using [`tflint`](https://github.com/terraform-linters/tflint).
-* Optional: Run `terraform plan`, only if the input variable `run_plan` is set to `true` (disabled by default).
 
 Include the following jobs in your existing workflows to use this workflow:
 ```yaml
@@ -44,8 +43,6 @@ jobs:
   check_tf:
     uses: scaleway-terraform-modules/wokflows/.github/workflows/tf_module_check.yaml@main
     secrets: inherit
-    with:
-      run_plan: true
 
 ```
 
