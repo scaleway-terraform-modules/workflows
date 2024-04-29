@@ -48,7 +48,9 @@ jobs:
 
 ## tf_project_apply.yaml
 
-Apply any changes on the infrastructure using terraform
+Apply any changes on the infrastructure using terraform//
+
+The job is configured to avoid deadlocks on the remote state. As such only one job will run at a time, and running jobs won't be cancelled.
 
 Include the following jobs in your existing workflows to use this workflow:
 ```yaml
