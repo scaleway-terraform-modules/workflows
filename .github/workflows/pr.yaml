@@ -14,4 +14,4 @@ name: Pull Request checks
 
 jobs:
   check_yaml:
-    uses: ./.github/workflows/check_yaml.yaml
+    uses: ./.github/workflows/yaml_check.yaml
