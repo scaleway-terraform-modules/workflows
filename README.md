@@ -60,6 +60,26 @@ jobs:
 
 ```
 
+## tf_project_plan.yaml
+
+Run some checks on terraform code and generate a plan, usefull when creating pull request on a project:
+* Formatting check using `terraform fmt`.
+* Configuration validation using `terraform validate`.
+* Generate a plan using `terraform plan`.
+* Linting using [`tflint`](https://github.com/terraform-linters/tflint).
+
+The job is configured to avoid deadlocks on the remote state. As such only one job will run at a time, and running jobs are not cancelled.
+
+Include the following jobs in your existing workflows to use this workflow:
+```yaml
+[...]
+jobs:
+  merge_tf:
+    uses: scaleway-terraform-modules/wokflows/.github/workflows/tf_project_apply.yaml@main
+    secrets: inherit
+
+```
+
 ## yaml_check.yaml
 
 Run [`yamllint`](https://www.yamllint.com/).
