@@ -33,7 +33,7 @@ jobs:
         run: terraform fmt -check -diff -recursive ./
       - id: tf_init
         name: "Terraform: Prepare working directory"
-        run: terraform init
+        run: terraform init -backend=false
       - id: tf_validate
         name: "Terraform: Check configuration is valid"
         run: terraform validate
