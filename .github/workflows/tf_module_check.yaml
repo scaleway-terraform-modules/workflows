@@ -31,6 +31,11 @@ jobs:
       - id: tf_fmt
         name: "Terraform: Check formatting"
         run: terraform fmt -check -diff -recursive ./
+      - name: "Terraform: Cache providers directory"
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9  # v4.0.2
+        with:
+          path: ./.terraform/providers
+          key: tf-${{ steps.tf_version.outputs.TF_VERSION }}-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('.terraform.lock.hcl') }}
       - id: tf_init
         name: "Terraform: Prepare working directory"
         run: terraform init -backend=false
