@@ -5,7 +5,7 @@ name: "Terraform Module: Code checks"
   workflow_call:
 jobs:
   terraform:
-    name: "Terraform"
+    name: "Terraform Module"
     runs-on: ubuntu-latest
     steps:
       - id: repo_checkout
@@ -37,7 +37,7 @@ jobs:
         name: "Terraform: Check configuration is valid"
         run: terraform validate
   tfdocs:
-    name: "Documentation"
+    name: "Module documentation"
     runs-on: ubuntu-latest
     steps:
       - id: repo_checkout
@@ -49,7 +49,7 @@ jobs:
         with:
           fail-on-diff: true
   tflint:
-    name: "Linting"
+    name: "Module linting"
     runs-on: ubuntu-latest
     steps:
       - id: repo_checkout
