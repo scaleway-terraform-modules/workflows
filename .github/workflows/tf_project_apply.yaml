@@ -28,7 +28,7 @@ jobs:
           echo "TF_VERSION=$TF_VERSION" >> $GITHUB_OUTPUT
       - id: tf_setup
         name: "Terraform: Setup"
-        uses: hashicorp/setup-terraform@97f030cf6dc0b4f5e0da352c7bca9cca34579800  # v3.1.0
+        uses: hashicorp/setup-terraform@651471c36a6092792c552e8b1bef71e592b462d8  # v3.1.1
         with:
           cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
           terraform_version: ${{steps.tf_version.outputs.TF_VERSION}}
