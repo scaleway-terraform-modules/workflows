@@ -20,7 +20,7 @@ jobs:
     steps:
       - id: repo_checkout
         name: "Repository: Checkout"
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29  # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332  # v4.1.7
       - id: tf_version
         name: "Terraform: Get version"
         run: |
@@ -58,7 +58,7 @@ jobs:
     steps:
       - id: repo_checkout
         name: "Repository: Checkout"
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29  # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332  # v4.1.7
       - id: tflint_cache
         name: "TFLint: Update cache"
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9  # v4.0.2
