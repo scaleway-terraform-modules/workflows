@@ -13,5 +13,6 @@ name: Pull Request checks
       - ready_for_review
 
 jobs:
-  check_yaml:
+  yaml_check:
+    name: "YAML: Syntax checks"
     uses: ./.github/workflows/yaml_check.yaml
