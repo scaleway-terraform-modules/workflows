@@ -67,7 +67,7 @@ jobs:
           key: tflint-${{ hashFiles('.tflint.hcl') }}
       - id: tflint_setup
         name: "TFLint: Setup"
-        uses: terraform-linters/setup-tflint@19a52fbac37dacb22a09518e4ef6ee234f2d4987  # v4.0.0
+        uses: terraform-linters/setup-tflint@8093687ecc9dcbfa88d07c103ad4176739a7287e  # v4.1.0
       - id: tflint_init
         name: "TFLint: Install plugins"
         run: tflint --init
