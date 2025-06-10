@@ -10,6 +10,9 @@ name: "Terraform Project: Generate Plan"
       TFE_TOKEN:
         description: "Terraform Cloud Token. Used for backend's authentication and ressource management"
         required: false
+
+permissions: {}
+
 jobs:
   terraform:
     name: "Terraform Project"

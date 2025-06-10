@@ -4,6 +4,8 @@ name: "Python: Syntax checks"
 "on":
   workflow_call:
 
+permissions: {}
+
 jobs:
   shell:
     name: "Python application"

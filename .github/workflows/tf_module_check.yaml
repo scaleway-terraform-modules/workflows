@@ -3,6 +3,9 @@ name: "Terraform Module: Code checks"
 
 "on":
   workflow_call:
+
+permissions: {}
+
 jobs:
   terraform:
     name: "Terraform Module"
