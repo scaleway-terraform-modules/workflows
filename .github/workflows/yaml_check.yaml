@@ -4,7 +4,8 @@ name: "YAML: Syntax checks"
 "on":
   workflow_call:
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   yaml:

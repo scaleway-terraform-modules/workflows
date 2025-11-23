@@ -4,7 +4,8 @@ name: "Shell: Syntax checks"
 "on":
   workflow_call:
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   shell:
