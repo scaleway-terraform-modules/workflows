@@ -39,7 +39,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
           terraform_version: ${{steps.tf_version.outputs.TF_VERSION}}
       - name: "Terraform: Cache providers directory"
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306  # v5.0.3
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7  # v5.0.4
         with:
           path: ./.terraform/providers
           key: tf-${{ steps.tf_version.outputs.TF_VERSION }}-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('.terraform.lock.hcl') }}
