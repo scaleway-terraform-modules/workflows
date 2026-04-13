@@ -19,4 +19,4 @@ jobs:
           persist-credentials: false
       - id: shhellcheck
         name: "Shellcheck: check scripts"
-        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38  # v2.0.0
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38  # 2.0.0
