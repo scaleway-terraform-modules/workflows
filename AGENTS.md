@@ -1,7 +1,7 @@
 # Instructions for AI agents
 
 This file is meant for AI coding agents and assistants (Claude, ChatGPT / Codex, Copilot, Gemini, Mistral, local models, etc.) working on this repository.
-Humans should read the organization's [CONTRIBUTING.md](https://github.com/scaleway-terraform-modules/.github/blob/main/CONTRIBUTING.md), which states the same policy.
+Humans should read [CONTRIBUTING.md](CONTRIBUTING.md), which states the same policy.
 
 ## AI contribution policy
 
@@ -57,4 +57,4 @@ This repository holds the reusable GitHub Actions workflows (`on: workflow_call`
   - Only use secrets declared in the `workflow_call.secrets` section, never print them.
 - Document any new or changed workflow in `README.md`.
 - Releases are semantic version tags (`vX.Y.Z`) that callers pin by commit SHA. Do not create tags or releases unless the operator explicitly asked for it.
-- Before committing, run `yamllint .` (configuration in `.yamllint.yaml`) and, if available, `actionlint`; report any check you could not run.
+- Before committing, run `yamllint .` (configuration in `.yamllint.yaml`); report it if you could not run it.
